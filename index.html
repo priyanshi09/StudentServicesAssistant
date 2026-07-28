@@ -5,9 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Student Services Assistant — Build Guide</title>
   <link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.5.1/github-markdown-light.min.css" />
+    href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.5.1/github-markdown-dark.min.css" />
   <link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css" />
+    href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css" />
   <style>
     :root {
       --accent: #2563eb;
@@ -37,9 +37,9 @@
       align-items: center;
       gap: 16px;
       padding: 12px 24px;
-      background: rgba(255,255,255,.82);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(255,255,255,.4);
+      background: rgba(13, 17, 33, 0.72);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid #26365c;
     }
     header.topnav .brand {
       font-weight: 700;
@@ -47,6 +47,7 @@
       display: flex;
       align-items: center;
       gap: 8px;
+      color: #e8eefc;
     }
     header.topnav .spacer { flex: 1; }
     header.topnav a.btn {
@@ -55,9 +56,9 @@
       font-weight: 600;
       padding: 7px 14px;
       border-radius: 8px;
-      border: 1px solid var(--border);
-      color: #1f2328;
-      background: #fff;
+      border: 1px solid #26365c;
+      color: #e8eefc;
+      background: #16223c;
       transition: all .15s;
     }
     header.topnav a.btn:hover { border-color: var(--accent); color: var(--accent); }
@@ -146,16 +147,16 @@
     nav.toc a { color: #dbe7ff; }
 
     .content-wrap {
-      background: #fff;
-      border: 1px solid rgba(255,255,255,.6);
+      background: #0d1117;
+      border: 1px solid #26365c;
       border-radius: 14px;
       margin: 28px 0 60px;
-      box-shadow: 0 12px 40px rgba(0,0,0,.18);
+      box-shadow: 0 20px 45px -20px rgba(0,0,0,.7);
     }
     .markdown-body {
       padding: 40px 48px;
     }
-    .markdown-body .mermaid { background: #fff; text-align: center; margin: 20px 0; }
+    .markdown-body .mermaid { background: transparent; text-align: center; margin: 20px 0; }
 
     /* Heading anchor links */
     .markdown-body .anchor {
@@ -233,7 +234,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
   <script type="module">
     import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
-    mermaid.initialize({ startOnLoad: false, theme: "default" });
+    mermaid.initialize({ startOnLoad: false, theme: "dark" });
 
     const MD_FILE = "student-service-assistant-v0.md";
 
