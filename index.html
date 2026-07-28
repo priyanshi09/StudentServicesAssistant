@@ -18,17 +18,13 @@
     * { box-sizing: border-box; }
     body {
       margin: 0;
-      background: linear-gradient(135deg, #0a1a3f 0%, #0f2557 25%, #13327a 50%, #1e3a8a 75%, #0c4a6e 100%);
-      background-size: 300% 300%;
+      background:
+        radial-gradient(1200px 600px at 80% -10%, rgba(99,102,241,0.28), transparent 60%),
+        radial-gradient(900px 500px at -10% 10%, rgba(34,211,238,0.20), transparent 55%),
+        #0b1120;
       background-attachment: fixed;
-      animation: bgshift 24s ease infinite;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
       color: #1f2328;
-    }
-    @keyframes bgshift {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
     }
     a { color: var(--accent); }
 
