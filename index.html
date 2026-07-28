@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Student Services Assistant — V0 Build Guide</title>
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.5.1/github-markdown-light.min.css" />
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css" />
+  <style>
+    body {
+      margin: 0;
+      background: #f6f8fa;
+    }
+    .markdown-body {
+      box-sizing: border-box;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 45px 5%;
+      background: #ffffff;
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+    }
+    .markdown-body .mermaid {
+      background: #fff;
+      text-align: center;
+    }
+    #loading {
+      text-align: center;
+      padding: 60px 20px;
+      color: #656d76;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+  </style>
+</head>
+<body>
+  <article id="content" class="markdown-body">
+    <div id="loading">Loading guide…</div>
+  </article>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/12.0.2/marked.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script type="module">
+    import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
+    mermaid.initialize({ startOnLoad: false, theme: "default" });
+
+    const MD_FILE = "student-service-assistant-v0.md";
+
+    // Custom renderer: turn ```mermaid blocks into <div class="mermaid">
+    const renderer = new marked.Renderer();
+    const origCode = renderer.code.bind(renderer);
+    renderer.code = (code, lang, escaped) => {
+      if (lang === "mermaid") {
+        return `<div class="mermaid">${code}</div>`;
+      }
+      return origCode(code, lang, escaped);
+    };
+
+    marked.setOptions({
+      renderer,
+      gfm: true,
+      breaks: false,
+      highlight: (code, lang) => {
+        if (lang && hljs.getLanguage(lang)) {
+          return hljs.highlight(code, { language: lang }).value;
+        }
+        return hljs.highlightAuto(code).value;
+      },
+    });
+
+    try {
+      const res = await fetch(MD_FILE);
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const md = await res.text();
+      document.getElementById("content").innerHTML = marked.parse(md);
+      await mermaid.run({ querySelector: ".markdown-body .mermaid" });
+      document.querySelectorAll("pre code").forEach((el) => hljs.highlightElement(el));
+    } catch (err) {
+      document.getElementById("content").innerHTML =
+        `<p style="color:#b00">Failed to load <code>${MD_FILE}</code>: ${err.message}</p>`;
+    }
+  </script>
+</body>
+</html>
