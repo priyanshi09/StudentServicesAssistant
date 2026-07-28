@@ -1,4 +1,4 @@
-# 🎓 Student Services Assistant
+# 🎓 Student Services Assistant V0
 
 A build guide for a single **Azure AI Foundry** agent grounded by a **Foundry IQ**
 knowledge base that does agentic retrieval over **two knowledge sources**:
